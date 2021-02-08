@@ -3,24 +3,47 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={{ padding: 40 }}>
+    <View
+      style={{
+        padding: 50,
+        flexDirection: 'row',
+        width: '80%',
+        height: 300,
+        justifyContent: 'space-around',
+        alignItems: 'stretch',
+      }}
+    >
       <View
         style={{
-          flexDirection: 'row',
+          flex: 1,
+          backgroundColor: 'red',
+
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <TextInput
-          placeholder='Write here...'
-          style={{
-            width: '80%',
-            borderColor: 'black',
-            borderWidth: 1,
-            padding: 5,
-          }}
-        />
-        <Button title='Click Me Baby' color='green' />
+        <Text>1</Text>
+      </View>
+      <View
+        style={{
+          flex: 2,
+          backgroundColor: 'green',
+
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Text>2</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'blue',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Text>3</Text>
       </View>
     </View>
   );
