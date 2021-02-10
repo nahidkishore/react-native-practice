@@ -1,27 +1,39 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { Button, Modal, StyleSheet, TextInput, View } from 'react-native';
 
 const GoalInput = (props) => {
   const [enteredGoal, setEnteredGoal] = useState('');
   const goalInputHandler = (enterText) => {
     setEnteredGoal(enterText);
   };
+  const addGoalHandler = () => {
+    props.onAddGoal(enteredGoal);
+    setEnteredGoal('');
+  };
   return (
-    <View style={styles.inputContainer}>
-    <TextInput
-      placeholder='Write here...'
-      style={styles.input}
-      onChangeText={goalInputHandler}
-      value={enteredGoal}
-    />
-    <Button title='Click Me Baby' color='green' onPress={()=> props.onAddGoal(enteredGoal)} />
-  </View>
+    <Modal visible={props.visible} animationType='slide'>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder='Write here...'
+          style={styles.input}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
+        />
+        <Button title='Cancel' color='red' onPress={props.onCancel} />
+        <Button
+          title='Click Me Baby'
+          color='green'
+          onPress={addGoalHandler}
+          /* onPress={() => props.onAddGoal(enteredGoal)} */
+        />
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: 'row',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -30,6 +42,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 5,
+    marginBottom: 10,
   },
-})
+});
 export default GoalInput;
